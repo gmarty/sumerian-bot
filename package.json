@@ -1,0 +1,34 @@
+{
+  "name": "sumerian-bot",
+  "description": "An educational Mastodon bot that posts one Sumerian cuneiform a day.",
+  "author": "edo999@gmail.com",
+  "keywords": [
+    "education",
+    "language",
+    "dead language",
+    "Sumerian",
+    "assyriology",
+    "sumerology"
+  ],
+  "license": "BlueOak-1.0.0",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "post": "node index.js"
+  },
+  "dependencies": {
+    "@dotenvx/dotenvx": "^0.39.0",
+    "masto": "^6.7.7",
+    "sharp": "^0.33.4",
+    "svg-path-bounds": "^1.0.2",
+    "text-to-svg": "^3.1.5"
+  },
+  "devDependencies": {
+    "prettier": "^3.2.5"
+  },
+  "prettier": {
+    "singleQuote": true
+  }
+}

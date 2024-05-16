@@ -1,0 +1,43 @@
+name: Post a status on Mastodon.
+
+on:
+  # Trigger the workflow every day at 10.10am UTC.
+  schedule:
+    - cron: '10 10 * * *'
+  # Allows you to run this workflow manually from the Actions tab on GitHub.
+  workflow_dispatch:
+
+jobs:
+  scheduled:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository using git
+        uses: actions/checkout@v4
+
+      - name: Set node version
+        uses: actions/setup-node@v4
+        with:
+          node-version: '>=20'
+
+      - name: Get npm cache directory
+        id: npm-cache-dir
+        shell: bash
+        run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
+
+      - name: Cache node modules
+        uses: actions/cache@v4
+        id: npm-cache # use this to check for `cache-hit` ==> if: steps.npm-cache.outputs.cache-hit != 'true'
+        with:
+          path: ${{ steps.npm-cache-dir.outputs.dir }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Post a status
+        run: npm run post --if-present
+        env:
+          MASTODON_SERVER: ${{ secrets.MASTODON_SERVER }}
+          MASTODON_TOKEN: ${{ secrets.MASTODON_TOKEN }}
