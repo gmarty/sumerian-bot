@@ -8,7 +8,7 @@ import getHashtags from './lib/getHashtags.js';
 
 // Post a status on Mastodon with an image attached.
 
-config(); // Configure dotenvx so we can read env variables locally.
+config({ quiet: true }); // Configure dotenvx so we can read env variables locally.
 
 if (!process.env.MASTODON_SERVER) {
   console.error(
