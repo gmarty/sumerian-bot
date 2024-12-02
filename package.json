@@ -19,14 +19,14 @@
     "post": "node index.js"
   },
   "dependencies": {
-    "@dotenvx/dotenvx": "^1.5.0",
-    "masto": "^6.8.0",
-    "sharp": "^0.33.4",
+    "@dotenvx/dotenvx": "^1.26.0",
+    "masto": "^6.10.1",
+    "sharp": "^0.33.5",
     "svg-path-bounds": "^1.0.2",
     "text-to-svg": "^3.1.5"
   },
   "devDependencies": {
-    "prettier": "^3.3.2"
+    "prettier": "^3.4.1"
   },
   "prettier": {
     "singleQuote": true
