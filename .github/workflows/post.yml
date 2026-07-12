@@ -1,9 +1,9 @@
 name: Post a status on Mastodon.
 
 on:
-  # Trigger the workflow every day at 10.10am UTC.
+  # Trigger the workflow every day at 9.12am UTC.
   schedule:
-    - cron: '10 10 * * *'
+    - cron: '12 9 * * *'
   # Allows you to run this workflow manually from the Actions tab on GitHub.
   workflow_dispatch:
 
@@ -17,7 +17,7 @@ jobs:
       - name: Set node version
         uses: actions/setup-node@v4
         with:
-          node-version: '>=20'
+          node-version: '>=24'
 
       - name: Get npm cache directory
         id: npm-cache-dir
