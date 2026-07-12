@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { config } from '@dotenvx/dotenvx';
+import '@dotenvx/dotenvx/config';
 import { createRestAPIClient } from 'masto';
 import { getDay } from './lib/utils.js';
 import getMediaBlob from './lib/getMediaBlob.js';
@@ -7,8 +7,6 @@ import getStatus from './lib/getStatus.js';
 import getHashtags from './lib/getHashtags.js';
 
 // Post a status on Mastodon with an image attached.
-
-config({ quiet: true }); // Configure dotenvx so we can read env variables locally.
 
 if (!process.env.MASTODON_SERVER) {
   console.error(
@@ -25,7 +23,7 @@ if (!process.env.MASTODON_TOKEN) {
 
 const day = getDay();
 
-// Generate the content of the status.
+// Generate the media.
 let mediaBlob;
 try {
   mediaBlob = await getMediaBlob(day);
